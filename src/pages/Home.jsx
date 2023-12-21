@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-function Index() {
+function Home() {
     const navigate = useNavigate();
     const [vehicles, setVehicles] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
@@ -411,4 +411,4 @@ function Index() {
     );
 }
 
-export default Index;
+export default Home;
