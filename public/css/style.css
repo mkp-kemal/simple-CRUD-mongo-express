@@ -1,0 +1,7 @@
+.single-line-cell {
+    max-height: 1.2em; /* Adjust this value based on your preference */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
