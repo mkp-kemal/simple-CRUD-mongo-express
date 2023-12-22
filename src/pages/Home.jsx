@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { baseURLAPI } from './Helper';
 
 function Home() {
     const navigate = useNavigate();
@@ -9,6 +10,7 @@ function Home() {
     const [currentPage, setCurrentPage] = useState(1);
     const rowsPerPage = 5;
     const [loading, setLoading] = useState(true);
+    const [ID, setID] = useState('');
 
 
     const [vehicleData, setVehicleData] = useState({});
@@ -23,7 +25,7 @@ function Home() {
 
     // GET ALL DATA
     const getVehicles = () => {
-        fetch('https://simple-crud-mongo-express-backend.vercel.app/vehicle', {
+        fetch(baseURLAPI('vehicle'), {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -76,7 +78,7 @@ function Home() {
 
     // CREATE DATA
     const handleSubmit = () => {
-        fetch('https://simple-crud-mongo-express-backend.vercel.app/vehicle', {
+        fetch(baseURLAPI('vehicle'), {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -100,7 +102,7 @@ function Home() {
 
     // UPDATE
     const handleUpdate = (id) => {
-        fetch(`https://simple-crud-mongo-express-backend.vercel.app/vehicle/${id}`, {
+        fetch(baseURLAPI(`vehicle/${id}`), {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -132,7 +134,7 @@ function Home() {
 
     // DELETE
     const deleteVehicle = (id) => {
-        fetch(`https://simple-crud-mongo-express-backend.vercel.app/vehicle/${id}`, {
+        fetch(baseURLAPI(`vehicle/${id}`), {
             method: 'DELETE',
         })
             .then(response => {
@@ -211,7 +213,7 @@ function Home() {
                                     </td>
                                     <td>
                                         {/* <button onClick={() => updateVehicleData(item)} className="btn btn-primary btn-sm mx-2 my-2" data-toggle="modal" data-target="#updateModal">Update</button> */}
-                                        <button className="btn btn-danger btn-sm mx-2" data-toggle="modal" data-target="#konfirmasiDelete"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14"><path fill="currentColor" fill-rule="evenodd" d="M5.763 2.013a1.75 1.75 0 0 1 2.914.737H5.323a1.75 1.75 0 0 1 .44-.737m-1.974.737a3.25 3.25 0 0 1 6.422 0H13a.75.75 0 0 1 0 1.5h-1v8.25a1.5 1.5 0 0 1-1.5 1.5h-7A1.5 1.5 0 0 1 2 12.5V4.25H1a.75.75 0 1 1 0-1.5zM5 5.876c.345 0 .625.28.625.625v4.002a.625.625 0 0 1-1.25 0V6.501c0-.345.28-.625.625-.625m4.625.625a.625.625 0 0 0-1.25 0v4.002a.625.625 0 0 0 1.25 0z" clip-rule="evenodd" /></svg></button>
+                                        <button className="btn btn-danger btn-sm mx-2" data-toggle="modal" onClick={() => setID(item.id)} data-target="#konfirmasiDelete"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14"><path fill="currentColor" fill-rule="evenodd" d="M5.763 2.013a1.75 1.75 0 0 1 2.914.737H5.323a1.75 1.75 0 0 1 .44-.737m-1.974.737a3.25 3.25 0 0 1 6.422 0H13a.75.75 0 0 1 0 1.5h-1v8.25a1.5 1.5 0 0 1-1.5 1.5h-7A1.5 1.5 0 0 1 2 12.5V4.25H1a.75.75 0 1 1 0-1.5zM5 5.876c.345 0 .625.28.625.625v4.002a.625.625 0 0 1-1.25 0V6.501c0-.345.28-.625.625-.625m4.625.625a.625.625 0 0 0-1.25 0v4.002a.625.625 0 0 0 1.25 0z" clip-rule="evenodd" /></svg></button>
                                     </td>
                                 </tr>
                             ))}
@@ -402,7 +404,7 @@ function Home() {
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                            <button type="button" class="btn btn-danger" onClick={() => deleteVehicle(item.id)}>Hapus</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal" onClick={() => deleteVehicle(ID)}>Hapus</button>
                         </div>
                     </div>
                 </div>
