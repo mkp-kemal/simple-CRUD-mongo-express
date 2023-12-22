@@ -190,7 +190,7 @@ function Home() {
                                 <th scope="col">Plat Nomor</th>
                                 <th scope="col">Nama Kendaraan</th>
                                 <th scope="col">Merk</th>
-                                <th scope="col">Tahun Produksi</th>
+                                <th scope="col">Odometer</th>
                                 <th scope="col">Catatan</th>
                                 <th scope="col">Kelengkapan Dokumen</th>
                                 <th scope="col">Aksi</th>
@@ -204,9 +204,9 @@ function Home() {
                                         <img src={item.img} alt="img" width={200} />
                                     </td>
                                     <td className="single-line-cell">{item.vehicle_ID}</td>
-                                    <td>{item.name}</td>
+                                    <td>{item.name} ({item.production_year})</td>
                                     <td>{item.brand}</td>
-                                    <td>{item.production_year}</td>
+                                    <td>{item.odometer} miles</td>
                                     <td>{item.notes}</td>
                                     <td>
                                         {item.complete_documents === 'Yes' ? 'Lengkap' : 'Rumpang'}
