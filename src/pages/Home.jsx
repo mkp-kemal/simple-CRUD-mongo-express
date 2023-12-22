@@ -23,7 +23,7 @@ function Home() {
 
     // GET ALL DATA
     const getVehicles = () => {
-        fetch('http://localhost:8000/vehicle', {
+        fetch('https://simple-crud-mongo-express-backend.vercel.app/vehicle', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -76,7 +76,7 @@ function Home() {
 
     // CREATE DATA
     const handleSubmit = () => {
-        fetch('http://localhost:8000/vehicle', {
+        fetch('https://simple-crud-mongo-express-backend.vercel.app/vehicle', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -100,7 +100,7 @@ function Home() {
 
     // UPDATE
     const handleUpdate = (id) => {
-        fetch(`http://localhost:8000/vehicle/${id}`, {
+        fetch(`https://simple-crud-mongo-express-backend.vercel.app/vehicle/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -132,7 +132,7 @@ function Home() {
 
     // DELETE
     const deleteVehicle = (id) => {
-        fetch(`http://localhost:8000/vehicle/${id}`, {
+        fetch(`https://simple-crud-mongo-express-backend.vercel.app/vehicle/${id}`, {
             method: 'DELETE',
         })
             .then(response => {
